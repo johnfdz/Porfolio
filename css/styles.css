@@ -5,6 +5,7 @@
     --bg-card-color: hsl(0,0%,98%);
     --transition: color 0.1s, background-color 0.2s ease-in-out;
     --border-radius: 0.4em;
+    --skills-bar-length: 0%;
 }
 
 *{
@@ -24,11 +25,24 @@ img{
 .main{
     display: grid;
     padding: 2em;
+    gap: .5em;
 }
 
 @media screen and (min-width:720px) {
     .main{
         grid-template-columns: min-content 1fr;
+    }
+}
+
+.column{
+    display: grid;
+    gap: 0.5em;
+}
+
+@media screen and (min-width:720px) {
+    .column--right{
+        grid-template-columns: repeat(3,1fr);
+        grid-template-rows: repeat(3,min-content);
     }
 }
 
@@ -78,6 +92,63 @@ body.dark{
 .card__text{
     font-size: 0.9rem;
     line-height: 1.6;
+}
+
+.skills{
+    padding: 1em 0;
+}
+
+
+.skills__item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: .5em;
+}
+
+.skills__tech{
+    margin: 0;
+    font-size: .8rem;  
+}
+
+.skills__header{
+    display: flex;
+    justify-content: space-between;
+    width: 175px;
+    margin-left: auto;
+}
+
+.skills__bar, .skills__bar::after{
+    position: relative;
+    width: 175px;
+    height: 8px;
+    background-color: #888;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.skills__bar--60::after{
+    --skills-bar-length: 60%;
+}
+
+.skills__bar--50::after{
+    --skills-bar-length: 50%;
+}
+
+
+.skills__bar::after{
+    content: "";
+    position: absolute;
+    left: -175px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+    animation: skills-bar-fill 2s ease-in-out forwards;
+}
+
+@keyframes skills-bar-fill{
+    to{
+        transform: translateX(var(--skills-bar-length));
+    }
 }
 
 .icon{
