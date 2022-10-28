@@ -158,6 +158,10 @@ body.dark{
     color: var(--primary-color);
 }
 
+.project{
+    position: absolute;
+}
+
 @media screen  and (min-width: 760px){
     .buttons{
         position: absolute;
