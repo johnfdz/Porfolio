@@ -48,7 +48,6 @@ img{
 
 .card{
     padding: 1em;
-    margin-bottom: 1em;
     background-color: var(--bg-card-color);
     border-radius: var(--border-radius);
 }
